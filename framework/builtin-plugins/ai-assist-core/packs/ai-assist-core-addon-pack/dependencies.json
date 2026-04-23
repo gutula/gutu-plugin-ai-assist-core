@@ -8,11 +8,28 @@
     "workflow-core",
     "ai-core",
     "ai-rag",
-    "crm-core",
-    "support-service-core",
-    "sales-core",
     "traceability-core"
   ],
+  "recommendedPlugins": [
+    "crm-core",
+    "support-service-core"
+  ],
+  "capabilityEnhancingPlugins": [
+    "projects-core",
+    "analytics-bi-core",
+    "business-portals-core"
+  ],
+  "integrationOnlyPlugins": [],
+  "suggestedPacks": [
+    "sector-ecommerce",
+    "sector-education",
+    "sector-financial-services-compliance",
+    "sector-healthcare",
+    "sector-nonprofit",
+    "sector-professional-services",
+    "sector-retail"
+  ],
+  "standaloneSupported": false,
   "requiredCapabilities": [
     "ui.register.admin",
     "api.rest.mount",

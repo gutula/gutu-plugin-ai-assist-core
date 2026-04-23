@@ -1,6 +1,35 @@
 {
   "packageId": "ai-assist-core",
   "packName": "ai-assist-core-addon-pack",
+  "requiredPlugins": [
+    "auth-core",
+    "org-tenant-core",
+    "role-policy-core",
+    "audit-core",
+    "workflow-core",
+    "ai-core",
+    "ai-rag",
+    "traceability-core"
+  ],
+  "recommendedPlugins": [
+    "crm-core",
+    "support-service-core"
+  ],
+  "capabilityEnhancingPlugins": [
+    "projects-core",
+    "analytics-bi-core",
+    "business-portals-core"
+  ],
+  "integrationOnlyPlugins": [],
+  "suggestedPacks": [
+    "sector-ecommerce",
+    "sector-education",
+    "sector-financial-services-compliance",
+    "sector-healthcare",
+    "sector-nonprofit",
+    "sector-professional-services",
+    "sector-retail"
+  ],
   "expectedActions": [
     "ai-assist.summaries.generate",
     "ai-assist.triage.route",

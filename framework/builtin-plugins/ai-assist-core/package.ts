@@ -24,9 +24,6 @@ export default definePackage({
     "workflow-core",
     "ai-core",
     "ai-rag",
-    "crm-core",
-    "support-service-core",
-    "sales-core",
     "traceability-core"
   ],
   "dependencyContracts": [
@@ -66,27 +63,63 @@ export default definePackage({
       "rationale": "Required for AI Assist Core to keep its boundary governed and explicit."
     },
     {
-      "packageId": "crm-core",
-      "class": "required",
-      "rationale": "Required for AI Assist Core to keep its boundary governed and explicit."
-    },
-    {
-      "packageId": "support-service-core",
-      "class": "required",
-      "rationale": "Required for AI Assist Core to keep its boundary governed and explicit."
-    },
-    {
-      "packageId": "sales-core",
-      "class": "required",
-      "rationale": "Required for AI Assist Core to keep its boundary governed and explicit."
-    },
-    {
       "packageId": "traceability-core",
       "class": "required",
       "rationale": "Required for AI Assist Core to keep its boundary governed and explicit."
+    },
+    {
+      "packageId": "crm-core",
+      "class": "optional",
+      "rationale": "Recommended with AI Assist Core for smoother production adoption and operator experience."
+    },
+    {
+      "packageId": "support-service-core",
+      "class": "optional",
+      "rationale": "Recommended with AI Assist Core for smoother production adoption and operator experience."
+    },
+    {
+      "packageId": "projects-core",
+      "class": "capability-enhancing",
+      "rationale": "Improves AI Assist Core with deeper downstream automation, visibility, or workflow coverage."
+    },
+    {
+      "packageId": "analytics-bi-core",
+      "class": "capability-enhancing",
+      "rationale": "Improves AI Assist Core with deeper downstream automation, visibility, or workflow coverage."
+    },
+    {
+      "packageId": "business-portals-core",
+      "class": "capability-enhancing",
+      "rationale": "Improves AI Assist Core with deeper downstream automation, visibility, or workflow coverage."
     }
   ],
-  "optionalWith": [],
+  "recommendedPlugins": [
+    "crm-core",
+    "support-service-core"
+  ],
+  "capabilityEnhancingPlugins": [
+    "projects-core",
+    "analytics-bi-core",
+    "business-portals-core"
+  ],
+  "integrationOnlyPlugins": [],
+  "suggestedPacks": [
+    "sector-ecommerce",
+    "sector-education",
+    "sector-financial-services-compliance",
+    "sector-healthcare",
+    "sector-nonprofit",
+    "sector-professional-services",
+    "sector-retail"
+  ],
+  "standaloneSupported": false,
+  "installNotes": [
+    "AI assist should be layered onto established workflows and kept assistive; it is not a source-of-truth plugin."
+  ],
+  "optionalWith": [
+    "crm-core",
+    "support-service-core"
+  ],
   "conflictsWith": [],
   "providesCapabilities": [
     "ai-assist.summaries",

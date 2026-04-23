@@ -37,9 +37,6 @@
     "@plugins/workflow-core": "workspace:*",
     "@plugins/ai-core": "workspace:*",
     "@plugins/ai-rag": "workspace:*",
-    "@plugins/crm-core": "workspace:*",
-    "@plugins/support-service-core": "workspace:*",
-    "@plugins/sales-core": "workspace:*",
     "@plugins/traceability-core": "workspace:*"
   }
 }
