@@ -5,6 +5,10 @@
 - `ai-assist.summaries.generate`: Generate Summary
 - `ai-assist.triage.route`: Route Triage Suggestion
 - `ai-assist.anomalies.review`: Review AI Anomaly
+- `ai-assist.summaries.hold`: Place Record On Hold
+- `ai-assist.summaries.release`: Release Record Hold
+- `ai-assist.summaries.amend`: Amend Record
+- `ai-assist.summaries.reverse`: Reverse Record
 
 ## Operational scenario matrix
 
@@ -69,6 +73,106 @@ Forbidden shortcuts:
 Review AI Anomaly
 
 Permission: `ai-assist.anomalies.write`
+
+Business purpose: Expose the plugin’s write boundary through a validated, auditable action contract.
+
+Preconditions:
+
+- Caller input must satisfy the action schema exported by the plugin.
+- The caller must satisfy the declared permission and any host-level installation constraints.
+- Integration should honor the action’s non-idempotent semantics.
+
+Side effects:
+
+- Mutates or validates state owned by `ai-assist.summaries`, `ai-assist.triage`, `ai-assist.anomalies`.
+- May schedule or describe follow-up background work.
+
+Forbidden shortcuts:
+
+- Do not bypass the action contract with undocumented service mutations in application code.
+- Do not document extra hooks, retries, or lifecycle semantics unless they are explicitly exported here.
+
+
+### `ai-assist.summaries.hold`
+
+Place Record On Hold
+
+Permission: `ai-assist.summaries.write`
+
+Business purpose: Expose the plugin’s write boundary through a validated, auditable action contract.
+
+Preconditions:
+
+- Caller input must satisfy the action schema exported by the plugin.
+- The caller must satisfy the declared permission and any host-level installation constraints.
+- Integration should honor the action’s non-idempotent semantics.
+
+Side effects:
+
+- Mutates or validates state owned by `ai-assist.summaries`, `ai-assist.triage`, `ai-assist.anomalies`.
+- May schedule or describe follow-up background work.
+
+Forbidden shortcuts:
+
+- Do not bypass the action contract with undocumented service mutations in application code.
+- Do not document extra hooks, retries, or lifecycle semantics unless they are explicitly exported here.
+
+
+### `ai-assist.summaries.release`
+
+Release Record Hold
+
+Permission: `ai-assist.summaries.write`
+
+Business purpose: Expose the plugin’s write boundary through a validated, auditable action contract.
+
+Preconditions:
+
+- Caller input must satisfy the action schema exported by the plugin.
+- The caller must satisfy the declared permission and any host-level installation constraints.
+- Integration should honor the action’s non-idempotent semantics.
+
+Side effects:
+
+- Mutates or validates state owned by `ai-assist.summaries`, `ai-assist.triage`, `ai-assist.anomalies`.
+- May schedule or describe follow-up background work.
+
+Forbidden shortcuts:
+
+- Do not bypass the action contract with undocumented service mutations in application code.
+- Do not document extra hooks, retries, or lifecycle semantics unless they are explicitly exported here.
+
+
+### `ai-assist.summaries.amend`
+
+Amend Record
+
+Permission: `ai-assist.summaries.write`
+
+Business purpose: Expose the plugin’s write boundary through a validated, auditable action contract.
+
+Preconditions:
+
+- Caller input must satisfy the action schema exported by the plugin.
+- The caller must satisfy the declared permission and any host-level installation constraints.
+- Integration should honor the action’s non-idempotent semantics.
+
+Side effects:
+
+- Mutates or validates state owned by `ai-assist.summaries`, `ai-assist.triage`, `ai-assist.anomalies`.
+- May schedule or describe follow-up background work.
+
+Forbidden shortcuts:
+
+- Do not bypass the action contract with undocumented service mutations in application code.
+- Do not document extra hooks, retries, or lifecycle semantics unless they are explicitly exported here.
+
+
+### `ai-assist.summaries.reverse`
+
+Reverse Record
+
+Permission: `ai-assist.summaries.write`
 
 Business purpose: Expose the plugin’s write boundary through a validated, auditable action contract.
 

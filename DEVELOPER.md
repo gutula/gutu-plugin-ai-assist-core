@@ -71,6 +71,10 @@ Provides bounded AI summaries, triage suggestions, and anomaly-review state for 
 | Action | `ai-assist.summaries.generate` | Permission: `ai-assist.summaries.write` | Generate Summary<br>Idempotent<br>Audited |
 | Action | `ai-assist.triage.route` | Permission: `ai-assist.triage.write` | Route Triage Suggestion<br>Non-idempotent<br>Audited |
 | Action | `ai-assist.anomalies.review` | Permission: `ai-assist.anomalies.write` | Review AI Anomaly<br>Non-idempotent<br>Audited |
+| Action | `ai-assist.summaries.hold` | Permission: `ai-assist.summaries.write` | Place Record On Hold<br>Non-idempotent<br>Audited |
+| Action | `ai-assist.summaries.release` | Permission: `ai-assist.summaries.write` | Release Record Hold<br>Non-idempotent<br>Audited |
+| Action | `ai-assist.summaries.amend` | Permission: `ai-assist.summaries.write` | Amend Record<br>Non-idempotent<br>Audited |
+| Action | `ai-assist.summaries.reverse` | Permission: `ai-assist.summaries.write` | Reverse Record<br>Non-idempotent<br>Audited |
 | Resource | `ai-assist.summaries` | Portal disabled | Generated summaries and operator-reviewed assist artifacts.<br>Purpose: Provide bounded AI assistance without making AI the source of business truth.<br>Admin auto-CRUD enabled<br>Fields: `title`, `recordState`, `approvalState`, `postingState`, `fulfillmentState`, `updatedAt` |
 | Resource | `ai-assist.triage` | Portal disabled | AI-generated triage and routing suggestions for business workflows.<br>Purpose: Surface assistive routing suggestions that operators can review and accept.<br>Admin auto-CRUD enabled<br>Fields: `label`, `status`, `requestedAction`, `updatedAt` |
 | Resource | `ai-assist.anomalies` | Portal disabled | Anomaly detection records and operator-review state.<br>Purpose: Track suspicious operational patterns and approval-gated follow-up explicitly.<br>Admin auto-CRUD enabled<br>Fields: `severity`, `status`, `reasonCode`, `updatedAt` |
@@ -156,11 +160,11 @@ stateDiagram-v2
 ### 1. Host wiring
 
 ```ts
-import { manifest, createPrimaryRecordAction, BusinessPrimaryResource, jobDefinitions, workflowDefinitions, adminContributions, uiSurface } from "@plugins/ai-assist-core";
+import { manifest, generateSummaryAction, BusinessPrimaryResource, jobDefinitions, workflowDefinitions, adminContributions, uiSurface } from "@plugins/ai-assist-core";
 
 export const pluginSurface = {
   manifest,
-  createPrimaryRecordAction,
+  generateSummaryAction,
   BusinessPrimaryResource,
   jobDefinitions,
   workflowDefinitions,
@@ -174,10 +178,10 @@ Use this pattern when your host needs to register the plugin’s declared export
 ### 2. Action-first orchestration
 
 ```ts
-import { manifest, createPrimaryRecordAction } from "@plugins/ai-assist-core";
+import { manifest, generateSummaryAction } from "@plugins/ai-assist-core";
 
 console.log("plugin", manifest.id);
-console.log("action", createPrimaryRecordAction.id);
+console.log("action", generateSummaryAction.id);
 ```
 
 - Prefer action IDs as the stable integration boundary.
@@ -219,7 +223,7 @@ console.log("action", createPrimaryRecordAction.id);
 
 ### Current truth
 
-- Exports 3 governed actions: `ai-assist.summaries.generate`, `ai-assist.triage.route`, `ai-assist.anomalies.review`.
+- Exports 7 governed actions: `ai-assist.summaries.generate`, `ai-assist.triage.route`, `ai-assist.anomalies.review`, `ai-assist.summaries.hold`, `ai-assist.summaries.release`, `ai-assist.summaries.amend`, `ai-assist.summaries.reverse`.
 - Owns 3 resource contracts: `ai-assist.summaries`, `ai-assist.triage`, `ai-assist.anomalies`.
 - Publishes 2 job definitions with explicit queue and retry policy metadata.
 - Publishes 1 workflow definition with state-machine descriptions and mandatory steps.
@@ -233,7 +237,7 @@ console.log("action", createPrimaryRecordAction.id);
 
 ### Current gaps
 
-- Repo-local documentation verification entrypoints were missing before this pass and need to stay green as the repo evolves.
+- No extra gaps were discovered beyond the plugin’s declared boundaries.
 
 ### Recommended next
 

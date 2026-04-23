@@ -109,7 +109,11 @@ export default definePackage({
   "publicCommands": [
     "ai-assist.summaries.generate",
     "ai-assist.triage.route",
-    "ai-assist.anomalies.review"
+    "ai-assist.anomalies.review",
+    "ai-assist.summaries.hold",
+    "ai-assist.summaries.release",
+    "ai-assist.summaries.amend",
+    "ai-assist.summaries.reverse"
   ],
   "publicQueries": [
     "ai-assist.summary-log",

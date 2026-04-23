@@ -6,7 +6,11 @@ export const scenarioDefinitions = [
     "actionIds": [
       "ai-assist.summaries.generate",
       "ai-assist.triage.route",
-      "ai-assist.anomalies.review"
+      "ai-assist.anomalies.review",
+      "ai-assist.summaries.hold",
+      "ai-assist.summaries.release",
+      "ai-assist.summaries.amend",
+      "ai-assist.summaries.reverse"
     ],
     "downstreamTargets": {
       "create": [],
@@ -27,7 +31,11 @@ export const scenarioDefinitions = [
     "actionIds": [
       "ai-assist.summaries.generate",
       "ai-assist.triage.route",
-      "ai-assist.anomalies.review"
+      "ai-assist.anomalies.review",
+      "ai-assist.summaries.hold",
+      "ai-assist.summaries.release",
+      "ai-assist.summaries.amend",
+      "ai-assist.summaries.reverse"
     ],
     "downstreamTargets": {
       "create": [],
@@ -48,7 +56,11 @@ export const scenarioDefinitions = [
     "actionIds": [
       "ai-assist.summaries.generate",
       "ai-assist.triage.route",
-      "ai-assist.anomalies.review"
+      "ai-assist.anomalies.review",
+      "ai-assist.summaries.hold",
+      "ai-assist.summaries.release",
+      "ai-assist.summaries.amend",
+      "ai-assist.summaries.reverse"
     ],
     "downstreamTargets": {
       "create": [],

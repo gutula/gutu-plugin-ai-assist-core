@@ -2,21 +2,29 @@ import { defineAction } from "@platform/schema";
 import { z } from "zod";
 
 import {
-  advancePrimaryRecord,
   createPrimaryRecord,
-  reconcilePrimaryRecord
+  advancePrimaryRecord,
+  reconcilePrimaryRecord,
+  placePrimaryRecordOnHold,
+  releasePrimaryRecordHold,
+  amendPrimaryRecord,
+  reversePrimaryRecord
 } from "../services/main.service";
 import {
-  advancePrimaryRecordInputSchema,
-  createPrimaryRecordInputSchema,
-  reconcilePrimaryRecordInputSchema,
   approvalStateSchema,
   fulfillmentStateSchema,
   postingStateSchema,
-  recordStateSchema
+  recordStateSchema,
+  createPrimaryRecordInputSchema,
+  advancePrimaryRecordInputSchema,
+  reconcilePrimaryRecordInputSchema,
+  placePrimaryRecordOnHoldInputSchema,
+  releasePrimaryRecordHoldInputSchema,
+  amendPrimaryRecordInputSchema,
+  reversePrimaryRecordInputSchema
 } from "../model";
 
-export const createPrimaryRecordAction = defineAction({
+export const generateSummaryAction = defineAction({
   id: "ai-assist.summaries.generate",
   description: "Generate Summary",
   input: createPrimaryRecordInputSchema,
@@ -37,7 +45,7 @@ export const createPrimaryRecordAction = defineAction({
   handler: ({ input }) => createPrimaryRecord(input)
 });
 
-export const advancePrimaryRecordAction = defineAction({
+export const routeTriageSuggestionAction = defineAction({
   id: "ai-assist.triage.route",
   description: "Route Triage Suggestion",
   input: advancePrimaryRecordInputSchema,
@@ -58,7 +66,7 @@ export const advancePrimaryRecordAction = defineAction({
   handler: ({ input }) => advancePrimaryRecord(input)
 });
 
-export const reconcilePrimaryRecordAction = defineAction({
+export const reviewAiAnomalyAction = defineAction({
   id: "ai-assist.anomalies.review",
   description: "Review AI Anomaly",
   input: reconcilePrimaryRecordInputSchema,
@@ -77,8 +85,84 @@ export const reconcilePrimaryRecordAction = defineAction({
   handler: ({ input }) => reconcilePrimaryRecord(input)
 });
 
+export const placeRecordOnHoldAction = defineAction({
+  id: "ai-assist.summaries.hold",
+  description: "Place Record On Hold",
+  input: placePrimaryRecordOnHoldInputSchema,
+  output: z.object({
+    ok: z.literal(true),
+    recordId: z.string(),
+    status: z.enum(["open", "under-review", "resolved", "closed"]),
+    revisionNo: z.number().int().positive(),
+    eventIds: z.array(z.string()),
+    jobIds: z.array(z.string())
+  }),
+  permission: "ai-assist.summaries.write",
+  idempotent: false,
+  audit: true,
+  handler: ({ input }) => placePrimaryRecordOnHold(input)
+});
+
+export const releaseRecordHoldAction = defineAction({
+  id: "ai-assist.summaries.release",
+  description: "Release Record Hold",
+  input: releasePrimaryRecordHoldInputSchema,
+  output: z.object({
+    ok: z.literal(true),
+    recordId: z.string(),
+    status: z.enum(["open", "under-review", "resolved", "closed"]),
+    revisionNo: z.number().int().positive(),
+    eventIds: z.array(z.string()),
+    jobIds: z.array(z.string())
+  }),
+  permission: "ai-assist.summaries.write",
+  idempotent: false,
+  audit: true,
+  handler: ({ input }) => releasePrimaryRecordHold(input)
+});
+
+export const amendRecordAction = defineAction({
+  id: "ai-assist.summaries.amend",
+  description: "Amend Record",
+  input: amendPrimaryRecordInputSchema,
+  output: z.object({
+    ok: z.literal(true),
+    recordId: z.string(),
+    amendedRecordId: z.string(),
+    revisionNo: z.number().int().positive(),
+    eventIds: z.array(z.string()),
+    jobIds: z.array(z.string())
+  }),
+  permission: "ai-assist.summaries.write",
+  idempotent: false,
+  audit: true,
+  handler: ({ input }) => amendPrimaryRecord(input)
+});
+
+export const reverseRecordAction = defineAction({
+  id: "ai-assist.summaries.reverse",
+  description: "Reverse Record",
+  input: reversePrimaryRecordInputSchema,
+  output: z.object({
+    ok: z.literal(true),
+    recordId: z.string(),
+    reversalRecordId: z.string(),
+    revisionNo: z.number().int().positive(),
+    eventIds: z.array(z.string()),
+    jobIds: z.array(z.string())
+  }),
+  permission: "ai-assist.summaries.write",
+  idempotent: false,
+  audit: true,
+  handler: ({ input }) => reversePrimaryRecord(input)
+});
+
 export const businessActions = [
-  createPrimaryRecordAction,
-  advancePrimaryRecordAction,
-  reconcilePrimaryRecordAction
+  generateSummaryAction,
+  routeTriageSuggestionAction,
+  reviewAiAnomalyAction,
+  placeRecordOnHoldAction,
+  releaseRecordHoldAction,
+  amendRecordAction,
+  reverseRecordAction
 ] as const;

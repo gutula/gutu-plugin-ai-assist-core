@@ -9,6 +9,10 @@
 | ai-assist.summaries.generate | Generate Summary |
 | ai-assist.triage.route | Route Triage Suggestion |
 | ai-assist.anomalies.review | Review AI Anomaly |
+| ai-assist.summaries.hold | Place Record On Hold |
+| ai-assist.summaries.release | Release Record Hold |
+| ai-assist.summaries.amend | Amend Record |
+| ai-assist.summaries.reverse | Reverse Record |
 | ai-assist.projections.refresh | Job definition queued on `ai-assist-projections`. |
 | ai-assist.reconciliation.run | Job definition queued on `ai-assist-reconciliation`. |
 | ai-assist-lifecycle | Generate, review, accept, reject, and reconcile bounded AI assistance across business teams. |

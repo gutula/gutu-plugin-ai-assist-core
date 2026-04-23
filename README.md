@@ -26,7 +26,7 @@ Guardrailed AI summaries, triage suggestions, anomaly detection, and operator-as
 
 Provides bounded AI summaries, triage suggestions, and anomaly-review state for business teams without making AI the source of truth.
 
-- Exports 3 governed actions: `ai-assist.summaries.generate`, `ai-assist.triage.route`, `ai-assist.anomalies.review`.
+- Exports 7 governed actions: `ai-assist.summaries.generate`, `ai-assist.triage.route`, `ai-assist.anomalies.review`, `ai-assist.summaries.hold`, `ai-assist.summaries.release`, `ai-assist.summaries.amend`, `ai-assist.summaries.reverse`.
 - Owns 3 resource contracts: `ai-assist.summaries`, `ai-assist.triage`, `ai-assist.anomalies`.
 - Publishes 2 job definitions with explicit queue and retry policy metadata.
 - Publishes 1 workflow definition with state-machine descriptions and mandatory steps.
@@ -71,7 +71,7 @@ This tier is justified because unit coverage exists, contract coverage exists, i
 
 | Surface | Count | Details |
 | --- | --- | --- |
-| Actions | 3 | `ai-assist.summaries.generate`, `ai-assist.triage.route`, `ai-assist.anomalies.review` |
+| Actions | 7 | `ai-assist.summaries.generate`, `ai-assist.triage.route`, `ai-assist.anomalies.review`, `ai-assist.summaries.hold`, `ai-assist.summaries.release`, `ai-assist.summaries.amend`, `ai-assist.summaries.reverse` |
 | Resources | 3 | `ai-assist.summaries`, `ai-assist.triage`, `ai-assist.anomalies` |
 | Jobs | 2 | `ai-assist.projections.refresh`, `ai-assist.reconciliation.run` |
 | Workflows | 1 | `ai-assist-lifecycle` |
@@ -96,10 +96,10 @@ bun run docs:check
 ```
 
 ```ts
-import { manifest, createPrimaryRecordAction, BusinessPrimaryResource, jobDefinitions, workflowDefinitions, adminContributions, uiSurface } from "@plugins/ai-assist-core";
+import { manifest, generateSummaryAction, BusinessPrimaryResource, jobDefinitions, workflowDefinitions, adminContributions, uiSurface } from "@plugins/ai-assist-core";
 
 console.log(manifest.id);
-console.log(createPrimaryRecordAction.id);
+console.log(generateSummaryAction.id);
 console.log(BusinessPrimaryResource.id);
 ```
 
