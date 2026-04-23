@@ -1,0 +1,24 @@
+{
+  "packageId": "ai-assist-core",
+  "packName": "ai-assist-core-addon-pack",
+  "expectedActions": [
+    "ai-assist.summaries.generate",
+    "ai-assist.triage.route",
+    "ai-assist.anomalies.review"
+  ],
+  "expectedResources": [
+    "ai-assist.summaries",
+    "ai-assist.triage",
+    "ai-assist.anomalies"
+  ],
+  "expectedReports": [
+    "Summary Generation Log",
+    "Anomaly Review Summary",
+    "AI Assist Adoption"
+  ],
+  "expectedExceptionQueues": [
+    "low-confidence-triage-review",
+    "anomaly-false-positive-review",
+    "assistant-feedback-backlog"
+  ]
+}

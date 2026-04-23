@@ -1,0 +1,9 @@
+{
+  "workflowId": "ai-assist-lifecycle",
+  "actors": [
+    "operator",
+    "reviewer",
+    "approver"
+  ],
+  "description": "Generate, review, accept, reject, and reconcile bounded AI assistance across business teams."
+}

@@ -1,0 +1,18 @@
+{
+  "pluginId": "ai-assist-core",
+  "reports": [
+    "Summary Generation Log",
+    "Anomaly Review Summary",
+    "AI Assist Adoption"
+  ],
+  "exceptionQueues": [
+    "low-confidence-triage-review",
+    "anomaly-false-positive-review",
+    "assistant-feedback-backlog"
+  ],
+  "operationalScenarios": [
+    "summary-generation",
+    "triage-routing",
+    "anomaly-review-with-human-approval"
+  ]
+}

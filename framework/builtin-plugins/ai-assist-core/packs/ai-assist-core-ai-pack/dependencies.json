@@ -1,0 +1,22 @@
+{
+  "plugin": "ai-assist-core",
+  "requiredPlugins": [
+    "auth-core",
+    "org-tenant-core",
+    "role-policy-core",
+    "audit-core",
+    "workflow-core",
+    "ai-core",
+    "ai-rag",
+    "crm-core",
+    "support-service-core",
+    "sales-core",
+    "traceability-core"
+  ],
+  "requiredCapabilities": [
+    "ui.register.admin",
+    "api.rest.mount",
+    "data.write.ai-assist",
+    "events.publish.ai-assist"
+  ]
+}

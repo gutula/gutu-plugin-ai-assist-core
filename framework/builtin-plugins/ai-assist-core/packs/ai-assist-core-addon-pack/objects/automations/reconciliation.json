@@ -1,0 +1,10 @@
+{
+  "automationId": "ai-assist-core.reconciliation.default",
+  "trigger": "exception-record-opened",
+  "action": "ai-assist.reconciliation.run",
+  "queues": [
+    "low-confidence-triage-review",
+    "anomaly-false-positive-review",
+    "assistant-feedback-backlog"
+  ]
+}

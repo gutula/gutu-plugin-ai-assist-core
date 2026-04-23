@@ -1,0 +1,9 @@
+{
+  "workspace": "ai-assist",
+  "route": "/admin/business/ai-assist",
+  "pageTitle": "AI Assist Control Room",
+  "defaultRecordState": "draft",
+  "defaultApprovalState": "pending",
+  "defaultPostingState": "unposted",
+  "defaultFulfillmentState": "none"
+}

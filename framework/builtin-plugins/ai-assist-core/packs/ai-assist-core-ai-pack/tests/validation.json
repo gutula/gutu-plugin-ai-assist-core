@@ -1,0 +1,14 @@
+{
+  "packageId": "ai-assist-core",
+  "packName": "ai-assist-core-ai-pack",
+  "expectedActions": [
+    "ai-assist.summaries.generate",
+    "ai-assist.triage.route",
+    "ai-assist.anomalies.review"
+  ],
+  "expectedResources": [
+    "ai-assist.summaries",
+    "ai-assist.triage",
+    "ai-assist.anomalies"
+  ]
+}
