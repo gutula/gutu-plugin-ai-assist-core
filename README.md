@@ -60,12 +60,12 @@ This tier is justified because unit coverage exists, contract coverage exists, i
 | Package | `@plugins/ai-assist-core` |
 | Manifest ID | `ai-assist-core` |
 | Repo | [gutu-plugin-ai-assist-core](https://github.com/gutula/gutu-plugin-ai-assist-core) |
-| Depends On | `auth-core`, `org-tenant-core`, `role-policy-core`, `audit-core`, `workflow-core`, `ai-core`, `ai-rag`, `crm-core`, `support-service-core`, `sales-core`, `traceability-core` |
-| Recommended Plugins | None |
-| Capability Enhancing | None |
+| Depends On | `auth-core`, `org-tenant-core`, `role-policy-core`, `audit-core`, `workflow-core`, `ai-core`, `ai-rag`, `traceability-core` |
+| Recommended Plugins | `crm-core`, `support-service-core` |
+| Capability Enhancing | `projects-core`, `analytics-bi-core`, `business-portals-core` |
 | Integration Only | None |
-| Suggested Packs | None |
-| Standalone Supported | Yes |
+| Suggested Packs | `sector-ecommerce`, `sector-education`, `sector-financial-services-compliance`, `sector-healthcare`, `sector-nonprofit`, `sector-professional-services`, `sector-retail` |
+| Standalone Supported | No |
 | Requested Capabilities | `ui.register.admin`, `api.rest.mount`, `data.write.ai-assist`, `events.publish.ai-assist` |
 | Provided Capabilities | `ai-assist.summaries`, `ai-assist.triage`, `ai-assist.anomalies` |
 | Runtime | bun>=1.3.12 |
@@ -74,13 +74,13 @@ This tier is justified because unit coverage exists, contract coverage exists, i
 
 ## Installation Guidance
 
-- Required plugins: `auth-core`, `org-tenant-core`, `role-policy-core`, `audit-core`, `workflow-core`, `ai-core`, `ai-rag`, `crm-core`, `support-service-core`, `sales-core`, `traceability-core`
-- Recommended plugins: none
-- Capability-enhancing plugins: none
+- Required plugins: `auth-core`, `org-tenant-core`, `role-policy-core`, `audit-core`, `workflow-core`, `ai-core`, `ai-rag`, `traceability-core`
+- Recommended plugins: `crm-core`, `support-service-core`
+- Capability-enhancing plugins: `projects-core`, `analytics-bi-core`, `business-portals-core`
 - Integration-only plugins: none
-- Suggested packs: none
-- Standalone supported: yes
-
+- Suggested packs: `sector-ecommerce`, `sector-education`, `sector-financial-services-compliance`, `sector-healthcare`, `sector-nonprofit`, `sector-professional-services`, `sector-retail`
+- Standalone supported: no
+- AI assist should be layered onto established workflows and kept assistive; it is not a source-of-truth plugin.
 
 ## Capability Matrix
 

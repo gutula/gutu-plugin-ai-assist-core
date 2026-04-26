@@ -53,12 +53,12 @@ Provides bounded AI summaries, triage suggestions, and anomaly-review state for 
 
 | Field | Value |
 | --- | --- |
-| Depends On | `auth-core`, `org-tenant-core`, `role-policy-core`, `audit-core`, `workflow-core`, `ai-core`, `ai-rag`, `crm-core`, `support-service-core`, `sales-core`, `traceability-core` |
-| Recommended Plugins | None |
-| Capability Enhancing | None |
+| Depends On | `auth-core`, `org-tenant-core`, `role-policy-core`, `audit-core`, `workflow-core`, `ai-core`, `ai-rag`, `traceability-core` |
+| Recommended Plugins | `crm-core`, `support-service-core` |
+| Capability Enhancing | `projects-core`, `analytics-bi-core`, `business-portals-core` |
 | Integration Only | None |
-| Suggested Packs | None |
-| Standalone Supported | Yes |
+| Suggested Packs | `sector-ecommerce`, `sector-education`, `sector-financial-services-compliance`, `sector-healthcare`, `sector-nonprofit`, `sector-professional-services`, `sector-retail` |
+| Standalone Supported | No |
 | Requested Capabilities | `ui.register.admin`, `api.rest.mount`, `data.write.ai-assist`, `events.publish.ai-assist` |
 | Provides Capabilities | `ai-assist.summaries`, `ai-assist.triage`, `ai-assist.anomalies` |
 | Owns Data | `ai-assist.summaries`, `ai-assist.triage`, `ai-assist.anomalies`, `ai-assist.feedback` |
